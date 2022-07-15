@@ -26,7 +26,29 @@ var models = [
     }
 ];
 
-var index=1;
-document.querySelector('.card-title').textContent=models[index].name;
-document.querySelector('.card-img-top').setAttribute('src',models[index].image);
-document.querySelector('.card-link').setAttribute('href',models[index].link);
+var index=3;
+var slaytcount=models.length;
+showslide(index);
+document.querySelector('.fa-solid fa-circle-arrow-left fa-2x').addEventListener('click',function(){
+    index--;
+    showslide(index);
+    console.log(index);
+});
+document.querySelector('.fa-solid fa-circle-arrow-right fa-2x').addEventListener('click',function(){
+    index++;
+    showslide(index);
+
+});
+function showslide(i){
+    index=i;
+    if(i<0){
+        index=slaytcount-1;
+    }
+    if(i>=slaytcount){
+        index=0;
+    }
+    document.querySelector('.card-title').textContent=models[index].name;
+    document.querySelector('.card-img-top').setAttribute('src',models[index].image);
+    document.querySelector('.card-link').setAttribute('href',models[index].link);
+    
+}
